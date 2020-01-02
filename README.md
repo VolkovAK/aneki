@@ -1,9 +1,10 @@
 # Aneki
-Random russian jokes from several sites to you terminal!
+Random russian jokes from several sites in your terminal!
 
 ## Dependencies
 Project tested on Python 3.5.
 All dependencies are described in requirements.txt, so just
+
     ```
     pip install -r requirements.txt
     ```
