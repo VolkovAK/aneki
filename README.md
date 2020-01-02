@@ -4,9 +4,9 @@ Random russian jokes from several sites to you terminal!
 ## Dependencies
 Project tested on Python 3.5.
 All dependencies are described in requirements.txt, so just
-    '''
-    pip install requirements.txt
-    '''
+    ```
+    pip install -r requirements.txt
+    ```
 
 
 ## Sites
