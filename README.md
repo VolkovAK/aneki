@@ -1,5 +1,6 @@
 # Aneki
 Random russian jokes from several sites in your terminal!
+![](https://github.com/VolkovAK/aneki/workflows/Build/badge.svg)
 
 ## Dependencies
 Project tested on Python 3.5.

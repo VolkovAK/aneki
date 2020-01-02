@@ -1,6 +1,11 @@
-name: AnekiPackage
+name: Build
 
-on: [push]
+on:
+  schedule:
+    - cron: '* * 1 * *' # run every 1 day of month
+  push:
+    branches:
+      - master
 
 jobs:
   build:
