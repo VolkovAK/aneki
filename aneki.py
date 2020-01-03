@@ -1,9 +1,9 @@
-from parsers import Bash, AnekdotRu
+from parsers import Bash, AnekdotRu, Nekdo
 import random
 
 
 def main():
-    sources = [Bash(), AnekdotRu()]
+    sources = [Bash(), AnekdotRu(), Nekdo()]
     text = -1
     while text == -1:
         parser_index = random.randint(0, len(sources) - 1)
