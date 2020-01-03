@@ -1,14 +1,14 @@
-from parsers import get_bash_anek
+from parsers import Bash, AnekdotRu
 import random
 
 
 def main():
-    sources = [get_bash_anek, get_bash_anek]
+    sources = [Bash(), AnekdotRu()]
     text = -1
     while text == -1:
-        parser_index = random.randint(0, len(sources))
+        parser_index = random.randint(0, len(sources) - 1)
         parser = sources[parser_index]
-        text = parser()
+        text = parser.get_anek()
     print(text)
 
 

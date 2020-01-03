@@ -12,6 +12,9 @@ All dependencies are described in requirements.txt, so just
 
 ## Sites
 Currently (02.01.2020) next sites are supported:
- - None
+ - bash.im
+ - anekdot.ru
 
-
+Next sites won't be supported:
+ - anekdotov.net - computer section is not funny IMHO
+ - pikabu.ru, ithappens.me - too long stories
