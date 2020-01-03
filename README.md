@@ -11,10 +11,11 @@ All dependencies are described in requirements.txt, so just
 
 
 ## Sites
-Currently (02.01.2020) next sites are supported:
+Currently (03.01.2020) next sites are supported:
  - bash.im
  - anekdot.ru
  - nekdo.ru
+ - shytok.net
 
 Next sites won't be supported:
  - anekdotov.net - computer section is not funny IMHO

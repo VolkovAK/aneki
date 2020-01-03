@@ -9,7 +9,10 @@ class Bash():
         pass
 
     def get_text(self, url):
-        res = rq.request('GET', url=url)
+        try:
+            res = rq.request('GET', url=url)
+        except rq.exceptions.ConnectionError:
+            return -1, ''
         return res.status_code, res.text
 
     def clear_text(self, text):
@@ -22,9 +25,13 @@ class Bash():
 
     def get_anek(self, url='https://bash.im/forweb/?u'):
         res, raw = self.get_text(url)
-        if res != 200:
+        max_tries = 5
+        while res != 200 and max_tries > 0:
+            res, raw = self.get_text(url)
+            max_tries -= 1
+        if max_tries == 0:
             return -1
-        text = self.clear_text(raw)
+        text = self.clear_text(raw)[:-1]
         return text
 
     def get_name(self):
@@ -45,7 +52,10 @@ class AnekdotRu():
 
     def get_text(self, url):
         headers = {'user-agent': 'nice try'}
-        res = rq.request('GET', url=url, headers=headers)
+        try:
+            res = rq.request('GET', url=url, headers=headers)
+        except rq.exceptions.ConnectionError:
+            return -1, ''
         return res.status_code, res.text
 
     def clear_anek(self, anek):
@@ -61,7 +71,14 @@ class AnekdotRu():
         page = random.randint(1, 5)
         url = 'https://pda.anekdot.ru/tags/{}/{}?type=anekdots&sort=sum'.format(tag, page)
         res, raw = self.get_text(url)
-        if res != 200:
+        max_tries = 5
+        while res != 200 and max_tries > 0:
+            tag = self.possible_tags[random.randint(0, len(self.possible_tags) - 1)]
+            page = random.randint(1, 5)
+            url = 'https://pda.anekdot.ru/tags/{}/{}?type=anekdots&sort=sum'.format(tag, page)
+            res, raw = self.get_text(url)
+            max_tries -= 1
+        if max_tries == 0:
             return -1
         alls = re.findall('class="text">.*?</div>', raw)
         alls = [self.clear_anek(anek) for anek in alls]
