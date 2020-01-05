@@ -1,8 +1,8 @@
-from parsers import Bash, AnekdotRu, Nekdo, ShytokNet
+from aneki.parsers import Bash, AnekdotRu, Nekdo, ShytokNet
 import random
 
 
-def main():
+def main(args=None):
     sources = [Bash(), AnekdotRu(), Nekdo(), ShytokNet()]
     text = -1
     max_tries = 10

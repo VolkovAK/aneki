@@ -2,6 +2,7 @@ import requests as rq
 import html
 import re
 import random
+import os
 
 
 class Bash():
@@ -160,7 +161,9 @@ class ShytokNet():
 
     def get_text(self, url):
         try:
-            res = rq.request('GET', url=url, verify='shytok_net.cert')
+            this_dir, this_filename = os.path.split(__file__)
+            cert_path = os.path.join(this_dir, 'shytok_net.cert')
+            res = rq.request('GET', url=url, verify=cert_path)
         except rq.exceptions.ContentDecodingError:
             return -1, ''
         return res.status_code, res.text

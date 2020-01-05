@@ -1,10 +1,15 @@
 # Aneki
-Random russian jokes from several sites in your terminal!  
+Random russian jokes (especially about computer and etc) from several sites in your terminal!  
 
-![](https://github.com/VolkovAK/aneki/workflows/Build/badge.svg)
+![](https://github.com/VolkovAK/aneki/workflows/Build/badge.svg)  
+
+## Usage  
+
+    python aneki.py
+
 
 ## Dependencies
-Project tested on Python 3.5 - 3.8.
+Project tested on Python 3.5 - 3.8 for Ubuntu 16.04 - 18.04.
 All dependencies are described in requirements.txt, so just
 
     pip install -r requirements.txt
