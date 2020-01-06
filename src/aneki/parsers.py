@@ -21,6 +21,7 @@ class Bash():
         end = text.find('/div>')
         text = text[start: end] + 'br>'
         text = text.replace("<' + 'br>", '\n')
+        text = text.replace("<' + 'br />", '\n')
         text = html.unescape(text)
         return text
 
