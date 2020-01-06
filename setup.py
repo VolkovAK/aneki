@@ -5,15 +5,12 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="aneki",
-    version="0.0.6",
+    version="0.1.0",
     author="VolkovAK",
     description="Aneki = jokes delivery",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/VolkovAK/aneki",
-    package_data={
-        '': ['*.cert'],
-    },
     package_dir={"": "src"},
     packages=setuptools.find_packages(where='src'),
     classifiers=[

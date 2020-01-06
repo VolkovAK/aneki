@@ -24,11 +24,11 @@ def print_anek():
 
 def main(args=None):
     sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
-    if args == None:
+    if args is None:
         print_anek()
     else:
         print('ANEK TEST')
 
-    
+
 if __name__ == '__main__':
     main()
