@@ -1,33 +1,21 @@
-from aneki.parsers import Bash, AnekdotRu, Nekdo, ShytokNet
-import random
+from aneki.core import Aneki
 import sys
 import codecs
+import argparse
 
 
-def print_anek():
-    sources = [Bash(), AnekdotRu(), Nekdo(), ShytokNet()]
-    text = -1
-    max_tries = 5
-    while text == -1 and max_tries > 0:
-        parser_index = random.randint(0, len(sources) - 1)
-        parser = sources[parser_index]
-        text = parser.get_anek()
-        max_tries -= 1
-    if max_tries == 0:
-        print('Сегодня Анеки в отпуске :(')
-        print('Зайдите на https://github.com/VolkovAK/aneki, вдруг там что-то есть.')
-        return 1
-    else:
-        print(text)
-    return 0
-
-
-def main(args=None):
+def main():
     sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
-    if args is None:
-        print_anek()
+
+    parser = argparse.ArgumentParser(description='Let\'s get some jokes from the Internet')
+    parser.add_argument('-t', '--test', help='test installation', action='store_true')
+    args = parser.parse_args()
+
+    aneki = Aneki()
+    if args.test:
+        aneki.test()
     else:
-        print('ANEK TEST')
+        aneki.print_anek()
 
 
 if __name__ == '__main__':

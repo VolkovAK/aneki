@@ -9,14 +9,14 @@ Random russian jokes (especially about computer and etc) from several sites in y
 
 
 ## Dependencies
-Project tested on Python 3.5 - 3.8 for Ubuntu 16.04 - 18.04.
+Project tested on Python 3.5 - 3.8 for Ubuntu 16.04 - 18.04.  
 All dependencies are described in requirements.txt, so just
 
     pip install -r requirements.txt
 
 
 ## Sites
-Currently (03.01.2020) next sites are supported:
+Currently (07.01.2020) next sites are supported:
  - bash.im
  - anekdot.ru
  - nekdo.ru

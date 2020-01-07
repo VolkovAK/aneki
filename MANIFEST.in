@@ -1,2 +1,2 @@
-include src/aneki/*.cert
-recursive-exclude src/aneki/__pycache__ *.pyc
+recursive-include src *.cert
+global-exclude *.pyc
