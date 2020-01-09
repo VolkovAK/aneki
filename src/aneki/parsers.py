@@ -34,7 +34,7 @@ class Bash(Parser):
     def get_text(self, url):
         return self._request_html(url)
 
-    def clear_text(self, text):
+    def clear_anek(self, text):
         start = text.find('#21201e">') + 9
         end = text.find('/div>')
         text = text[start: end] + 'br>'
@@ -54,7 +54,7 @@ class Bash(Parser):
             max_tries -= 1
         if max_tries == 0:
             return -1
-        text = self.clear_text(raw)[:-1]
+        text = self.clear_anek(raw)[:-1]
         return text
 
     def get_name(self):

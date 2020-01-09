@@ -22,10 +22,10 @@ Project have single dependency and it's "requests"
 
 ## Sites
 Currently (07.01.2020) next sites are supported:
- - bash.im
- - anekdot.ru
- - nekdo.ru
- - shytok.net
+ - bash.im ![](https://github.com/VolkovAK/aneki/workflows/Bash/badge.svg)  
+ - anekdot.ru ![](https://github.com/VolkovAK/aneki/workflows/AnekdotRu/badge.svg)  
+ - nekdo.ru ![](https://github.com/VolkovAK/aneki/workflows/NekdoRu/badge.svg)  
+ - shytok.net ![](https://github.com/VolkovAK/aneki/workflows/ShytokNet/badge.svg)  
 
 Next sites won't be supported:
  - anekdotov.net - computer section is not funny IMHO
