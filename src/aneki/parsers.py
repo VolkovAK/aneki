@@ -43,11 +43,14 @@ class Bash(Parser):
         text = html.unescape(text)
         return text
 
-    def get_anek(self, url='https://bash.im/forweb/?u'):
-        res, raw = self.get_text(url)
+    def get_url(self):
+        return 'https://bash.im/forweb/?u'
+
+    def get_anek(self):
+        res, raw = self.get_text(self.get_url())
         max_tries = 5
         while res != 200 and max_tries > 0:
-            res, raw = self.get_text(url)
+            res, raw = self.get_text(self.get_url())
             max_tries -= 1
         if max_tries == 0:
             return -1
@@ -87,19 +90,19 @@ class AnekdotRu(Parser):
         anek = html.unescape(anek)
         return anek
 
-    def get_anek(self):
+    def get_url(self):
         tag = self.possible_tags[random.randint(0, len(self.possible_tags) - 1)]
         page = random.randint(1, 5)
         url = 'https://pda.anekdot.ru/tags/{}/{}?type=anekdots&sort=sum'.format(tag, page)
-        res, raw = self.get_text(url)
+        return url
+
+    def get_anek(self):
+        res, raw = self.get_text(self.get_url())
         max_tries = 5
         while res != 200 and max_tries > 0:
-            tag = self.possible_tags[random.randint(0, len(self.possible_tags) - 1)]
-            page = random.randint(1, 5)
-            url = 'https://pda.anekdot.ru/tags/{}/{}?type=anekdots&sort=sum'.format(tag, page)
-            res, raw = self.get_text(url)
+            res, raw = self.get_text(self.get_url())
             max_tries -= 1
-        if max_tries == 0:
+        if res != 200:
             return -1
         alls = re.findall('class="text">.*?</div>', raw)
         alls = [self.clear_anek(anek) for anek in alls]
@@ -132,11 +135,18 @@ class Nekdo(Parser):
         anek = html.unescape(anek)
         return anek
 
-    def get_anek(self):
+    def get_url(self):
         tag = self.possible_tags[random.randint(0, len(self.possible_tags) - 1)]
         page = random.randint(1, 80)  # 80 - last page for internet
         url = 'https://nekdo.ru/{}/{}'.format(tag, page)
-        res, raw = self.get_text(url)
+        return url
+
+    def get_anek(self):
+        res, raw = self.get_text(self.get_url())
+        max_tries = 5
+        while res != 200 and max_tries > 0:
+            res, raw = self.get_text(self.get_url())
+            max_tries -= 1
         if res != 200:
             return -1
         alls = re.findall('[0-9]">.*?</div>', raw)  # anek
@@ -181,27 +191,28 @@ class ShytokNet(Parser):
 
     def clear_anek(self, anek):
         anek = anek[15:-14]
+        anek = anek.replace('<br />', '<br>')
         anek = anek.replace('<br>', '\n')
         anek = html.unescape(anek)
         return anek
 
-    def get_anek(self):
+    def get_url(self):
         tag = self.possible_tags[random.randint(0, len(self.possible_tags) - 1)]
         page = random.randint(1, 20)
         url = 'https://shytok.net/anekdots/{}-{}.html'.format(tag, page)
-        res, raw = self.get_text(url)
+        return url
+
+    def get_anek(self):
+        res, raw = self.get_text(self.get_url())
         max_tries = 5
-        if res != 200 and max_tries > 0:
-            page = random.randint(1, 20)
-            url = 'https://shytok.net/anekdots/{}-{}.html'.format(tag, page)
-            res, raw = self.get_text(url)
+        while res != 200 and max_tries > 0:
+            res, raw = self.get_text(self.get_url())
             max_tries -= 1
-        if max_tries == 0:
+        if res != 200:
             return -1
         raw = raw.replace('<br />\r\n', '<br>')
         raw = raw.replace('<br />\r', '<br>')
         raw = raw.replace('<br />\n', '<br>')
-        raw = raw.replace('<br />', '<br>')
         alls = re.findall('"text">.*?</div>', raw)
         alls = [self.clear_anek(anek) for anek in alls]
         if len(alls) == 0:

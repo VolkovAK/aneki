@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="aneki",
-    version="0.2.2",
+    version="0.2.5",
     author="VolkovAK",
     description="Aneki = jokes delivery",
     long_description=long_description,
